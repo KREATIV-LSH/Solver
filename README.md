@@ -3,13 +3,13 @@ This is a small project for a mathematical "problem"
 I already was able to solve the "problem" with a little program:
 ```Java
 public static void main(String[] args) {
-	for(int i = 9; i <= 100_000_000; i+=10) {
-		boolean is = true;
-		for(int j = 2; j <= 10; j++) {
-			if(!((i % j) >= (j / 2))) { is = false; }
-		}
-		if(is) { System.out.println(i);}
-	}
+    for(int i = 9; i <= 100_000_000; i+=10) {
+        boolean is = true;
+        for(int j = 2; j <= 10; j++) {
+            if(!((i % j) >= (j / 2))) { is = false; }
+        }
+        if(is) { System.out.println(i);}
+    }
 }
 ```
 
