@@ -39,3 +39,6 @@ private static int[] halfLUT = {
 
 Another optimization used is the way that for loops are used, in the highly optimized versions of this program the main for-loop will travers from end to beginning and not like normally from beginning to end.
 This will speed up runtime of the program slightly.
+
+# Goals
+My goals with this project are making the program as fast as possible and also learning how to use git and GitHub in a productive way!
