@@ -1,3 +1,5 @@
+package ch.lsh.solver.main;
+
 public class Util {
     
     public static StringBuilder mainSB;
@@ -6,8 +8,17 @@ public class Util {
         mainSB = new StringBuilder(sbCapacity);
     }
 
-    public static void printBuf() {
+    public static void garbageCollector() {
+        System.gc();
+        System.runFinalization();
+    }
 
+    public static void startPrint() {
+        mainSB.setLength(0);
+    }
+
+    public static void endPrint() {
+        System.out.println(mainSB.toString());
     }
 
 }
