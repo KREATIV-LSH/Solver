@@ -3,7 +3,10 @@ package ch.lsh.solver.main;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+import ch.lsh.solver.solver.SolverHandler;
+
 public class Main {
+
 	
 	public static void main(String[] args) {
 		// Setting up util-class with a 16 char big StringBuilder
@@ -11,6 +14,9 @@ public class Main {
 
 		// Setting up modes for easier handling later
 		ModesHandler.setupModes();
+
+		// Setting up SolverHandler
+		SolverHandler.setupSolvers();
 
 		// BufferedReader that can read from the shell
 		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
@@ -51,7 +57,9 @@ public class Main {
 			e.printStackTrace();
 			System.exit(1);
 		}
-		System.out.println("FOUND: " + mode);
+		
+		// Passing user input to ModesHandler
+		ModesHandler.handelModeSelection(mode);
 	}
 
 }

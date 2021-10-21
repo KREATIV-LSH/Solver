@@ -3,6 +3,9 @@ package ch.lsh.solver.main;
 import java.util.HashMap;
 import java.util.stream.Stream;
 
+import ch.lsh.solver.solver.Solver;
+import ch.lsh.solver.solver.SolverHandler;
+
 public class ModesHandler {
 
 	// Constructor to satisfy sonarlint S111
@@ -44,6 +47,34 @@ public class ModesHandler {
 		Util.mainSB.append(Util.padd(padd, 4, " "));
 		Util.mainSB.append("Exits the program");
 		Util.mainSB.append("\n");
+	}
+
+	public static void handelModeSelection(int modeInput) {
+		String[] modeNames = modes.keySet().toArray(new String[0]);
+		if(modeInput == modes.size()) {
+			Util.startPrint();
+			Util.mainSB.append("Exiting...");
+			Util.endPrint();
+			System.exit(0);
+		}
+		if (modeInput <= modes.size()) {
+			String mode = modeNames[modeInput];
+			Util.startPrint();
+			Util.mainSB.append("Selected Mode: ");
+			Util.mainSB.append(mode);
+			Util.mainSB.append("\n");
+			Util.endPrint();
+
+			Solver solver = SolverHandler.getSolverByName(mode);
+			if(solver == null) {
+				System.err.println("ERROR: not able to get corresponding solver for name '" + mode + "'");
+				System.exit(1);
+			}
+		} else {
+			System.err.println("Provided mode is not a valid mode!");
+			System.out.println("Exiting...");
+			System.exit(0);
+		}
 	}
 
 }
