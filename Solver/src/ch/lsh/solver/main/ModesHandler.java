@@ -21,9 +21,9 @@ public class ModesHandler {
 		modes = new HashMap<>();
 
 		// Adding the different modes
-		modes.put("Old", "Old implementation of solver");
-		modes.put("IntOptimized", "Integer-based version of solver with optimization");
-		modes.put("LongOptimized", "Long-based version of solver with optimization");
+		for(Solver solver : SolverHandler.getSolverList()) {
+			modes.put(solver.getName(), solver.getDescription());
+		}
 	}
 	
 	public static void addModesOptionsToBuf() {
@@ -70,6 +70,7 @@ public class ModesHandler {
 				System.err.println("ERROR: not able to get corresponding solver for name '" + mode + "'");
 				System.exit(1);
 			}
+			solver.execute();
 		} else {
 			System.err.println("Provided mode is not a valid mode!");
 			System.out.println("Exiting...");

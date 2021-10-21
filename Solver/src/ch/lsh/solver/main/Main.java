@@ -12,11 +12,11 @@ public class Main {
 		// Setting up util-class with a 16 char big StringBuilder
 		Util.setup(16);
 
-		// Setting up modes for easier handling later
-		ModesHandler.setupModes();
-
 		// Setting up SolverHandler
 		SolverHandler.setupSolvers();
+
+		// Setting up modes for easier handling later
+		ModesHandler.setupModes();
 
 		// BufferedReader that can read from the shell
 		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));

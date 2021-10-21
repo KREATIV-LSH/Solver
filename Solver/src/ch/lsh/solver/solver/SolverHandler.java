@@ -2,6 +2,8 @@ package ch.lsh.solver.solver;
 
 import java.util.ArrayList;
 
+import ch.lsh.solver.solver.impl.*;
+
 public class SolverHandler {
 
 	private static ArrayList<Solver> solverList;
@@ -13,7 +15,9 @@ public class SolverHandler {
 
 	public static void setupSolvers() {
 		solverList = new ArrayList<>();
-
+		addSolver(new OldSolver());
+		addSolver(new IntOptimizedSolver());
+		addSolver(new LongOptimizedSolver());
 	}
 
 	private static void addSolver(Solver solver) {
