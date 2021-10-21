@@ -35,7 +35,7 @@ public class Util {
 
 	// End printing by printing data that is in the StringBuilder
 	public static void endPrint() {
-		System.out.println(mainSB.toString());
+		System.out.print(mainSB.toString());
 	}
 
 }
