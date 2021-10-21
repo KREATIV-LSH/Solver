@@ -28,6 +28,19 @@ public class Util {
 		return tempSb.toString();
 	}
 
+	// Check if input string can be converted to number
+	public static boolean isNumber(String input) {
+		input = input.replace("_", "").replace(",", "").replace(".", "").replace("`", "").replace("'", "");
+		if(input.length() == 0) return false;
+		return input.chars().allMatch(Character::isDigit);
+	}
+
+	// Parses a String to an int
+	public static int parseInt(String in) {
+		in = in.replace("_", "").replace(",", "").replace(".", "").replace("`", "").replace("'", "");
+		return Integer.parseInt(in);
+	}
+
 	// Start printing by resetting StringBuilder
 	public static void startPrint() {
 		mainSB.setLength(0);

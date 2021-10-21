@@ -59,11 +59,6 @@ public class ModesHandler {
 		}
 		if (modeInput <= modes.size()) {
 			String mode = modeNames[modeInput];
-			Util.startPrint();
-			Util.mainSB.append("Selected Mode: ");
-			Util.mainSB.append(mode);
-			Util.mainSB.append("\n");
-			Util.endPrint();
 
 			Solver solver = SolverHandler.getSolverByName(mode);
 			if(solver == null) {

@@ -7,6 +7,8 @@ import ch.lsh.solver.solver.SolverHandler;
 
 public class Main {
 
+	// BufferedReader that can read from the shell
+	public static final BufferedReader inputBuffReader = new BufferedReader(new InputStreamReader(System.in));
 	
 	public static void main(String[] args) {
 		// Setting up util-class with a 16 char big StringBuilder
@@ -17,9 +19,6 @@ public class Main {
 
 		// Setting up modes for easier handling later
 		ModesHandler.setupModes();
-
-		// BufferedReader that can read from the shell
-		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 
 		// Printing welcome and star messages
 		Util.startPrint();
@@ -34,13 +33,13 @@ public class Main {
 		String mode_;
 		int  mode = 0;
 		try {
-			mode_ = bf.readLine();
+			mode_ = inputBuffReader.readLine();
 			if(mode_ != null) {
 				while (mode_.length() == 0) {
 					Util.startPrint();
 					Util.mainSB.append("Select mode: ");
 					Util.endPrint();
-					mode_ = bf.readLine();
+					mode_ = inputBuffReader.readLine();
 				}
 				mode_ = mode_.replace("\n", "").replace("\r", "");
 				if(mode_.chars().allMatch(Character::isDigit)) {
