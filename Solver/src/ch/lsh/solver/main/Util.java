@@ -1,10 +1,5 @@
 package ch.lsh.solver.main;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Set;
-
 public class Util {
 
 	public static StringBuilder mainSB;
@@ -23,6 +18,14 @@ public class Util {
 	public static void garbageCollector() {
 		System.gc();
 		System.runFinalization();
+	}
+
+	// Custom padding for string, used mainly for printing
+	public static String padd(int padding, int prevLen, String padder) {
+		if(padding == 0 || padder.length() == 0) return null;
+		StringBuilder tempSb = new StringBuilder((padding-prevLen)/padder.length()+2);
+		for(int j = 0; j < (padding-prevLen)/padder.length(); j += padder.length()) { tempSb.append(padder); }
+		return tempSb.toString();
 	}
 
 	// Start printing by resetting StringBuilder
