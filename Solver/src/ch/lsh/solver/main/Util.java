@@ -3,6 +3,7 @@ package ch.lsh.solver.main;
 public class Util {
 
 	public static StringBuilder mainSB;
+	private static boolean printEnable = true;
 
 	// Constructor to satisfy sonarlint S111
 	private Util() {
@@ -12,6 +13,14 @@ public class Util {
 	// Sets up the StringBuilder
 	public static void setup(int sbCapacity) {
 		mainSB = new StringBuilder(sbCapacity);
+	}
+
+	public static void enablePrintingGlobaly() {
+		printEnable = true;
+	}
+
+	public static void disablePrintingGlobaly() {
+		printEnable = false;
 	}
 
 	// Force Garbage-Collection cycle in jvm
@@ -54,7 +63,7 @@ public class Util {
 
 	// End printing by printing data that is in the StringBuilder
 	public static void endPrint() {
-		System.out.print(mainSB.toString());
+		if (printEnable) System.out.print(mainSB.toString());
 	}
 
 }
