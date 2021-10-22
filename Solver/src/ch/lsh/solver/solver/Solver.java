@@ -61,7 +61,7 @@ public abstract class Solver {
 			if (start.toCharArray()[start.length()-1] != '9') {
 				Util.startPrint();
 				Util.mainSB.append(
-						"\nYour provided start point does not end with the digit '9' this will often cause errors!\n");
+						"\nYour provided start or end point(will depend on solver) does not end with the digit '9' this will often cause errors!\n");
 				Util.mainSB.append("Do you want to continue anyways(could yield wrong results or errors)? (y/N): ");
 				Util.endPrint();
 				String input = "";
@@ -162,14 +162,14 @@ public abstract class Solver {
 		}
 		if (lineBufSize) {
 			Util.startPrint();
-			Util.mainSB.append("Line buffer size(how many lines will be stored in the buffer before printing):");
+			Util.mainSB.append("Line buffer size(how many lines will be stored in the buffer before printing): ");
 			Util.endPrint();
 			String _lineBufSize = Main.inputBuffReader.readLine();
 			if (_lineBufSize != null) {
 				while (_lineBufSize.length() == 0 || !Util.isNumber(_lineBufSize)) {
 					Util.startPrint();
 					Util.mainSB
-							.append("Line buffer size(how many lines will be stored in the buffer before printing):");
+							.append("Line buffer size(how many lines will be stored in the buffer before printing): ");
 					Util.endPrint();
 					_lineBufSize = Main.inputBuffReader.readLine();
 				}

@@ -18,7 +18,7 @@ public class OldSolver extends Solver {
 			e.printStackTrace();
 			System.exit(1);
 		}
-		
+
 		this.checkIfStart9(inputs[0]);
 
 		int start = Util.parseInt(inputs[0]);
@@ -49,7 +49,6 @@ public class OldSolver extends Solver {
 				if(!((i % j) >= (j / 2))) { is = false; }
 			}
 			if(is) {
-				// System.out.println(i + "\t" + (distance ? i - prev : ""));
 				printBufCount++;
 				Util.mainSB.append(i);
 				Util.mainSB.append("\t");
