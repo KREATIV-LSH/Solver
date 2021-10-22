@@ -1,7 +1,9 @@
 package ch.lsh.solver.solver;
 
 import java.io.IOException;
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 import ch.lsh.solver.main.Main;
 import ch.lsh.solver.main.Util;
@@ -52,6 +54,27 @@ public abstract class Solver {
 		Util.startPrint();
 		Util.mainSB.append("\nStarting now...");
 		Util.endPrint();
+	}
+
+	public static void formatAppendTimeToBuff(long nanoseconds) {
+		long miliseconds = TimeUnit.NANOSECONDS.toMillis(nanoseconds);
+		long seconds = TimeUnit.MILLISECONDS.toSeconds(miliseconds);
+		long minutes = TimeUnit.SECONDS.toMinutes(seconds);
+		long hours = TimeUnit.MINUTES.toHours(minutes);
+		long days = TimeUnit.HOURS.toDays(hours);
+
+		Util.mainSB.append(nanoseconds);
+		Util.mainSB.append("ns\n");
+		Util.mainSB.append(miliseconds);
+		Util.mainSB.append("ms\n");
+		Util.mainSB.append(seconds);
+		Util.mainSB.append("s\n");
+		Util.mainSB.append(minutes);
+		Util.mainSB.append("min\n");
+		Util.mainSB.append(hours);
+		Util.mainSB.append("h\n");
+		Util.mainSB.append(days);
+		Util.mainSB.append("day\n");
 	}
 
 	// Checks if the start value ends with a 9

@@ -1,13 +1,10 @@
 package ch.lsh.solver.solver.impl;
 
+import ch.lsh.solver.main.Main;
 import ch.lsh.solver.main.Util;
 import ch.lsh.solver.solver.Solver;
 
 public class IntOptimizedSolver extends Solver {
-
-	// LUT = Look Up Table
-	// Pre calculated the half's of possible numbers for j (2-10) rounded up
-	private static int[] halfLUT = {1, 2, 2, 3, 3, 4, 4, 5, 5};
 
 	public IntOptimizedSolver() {
 		super("IntOptimized", "Integer-based version of solver with optimization");
@@ -31,14 +28,13 @@ public class IntOptimizedSolver extends Solver {
 
 		this.startingCountdown(5);
 
-		long startTime = System.currentTimeMillis();
+		long startTime = System.nanoTime();
 		calculate(start, stop, distance, lineBufSize);
-		long elapsedTime = System.currentTimeMillis() - startTime;
+		long elapsedTime = System.nanoTime() - startTime;
 		Util.startPrint();
 		Util.mainSB.append("Finished!\n");
-		Util.mainSB.append("Time of calculation: ");
-		Util.mainSB.append(elapsedTime);
-		Util.mainSB.append("ms\n");
+		Util.mainSB.append("Time of calculation:\n");
+		this.formatAppendTimeToBuff(elapsedTime);
 		Util.endPrint();
 	}
 
@@ -56,7 +52,7 @@ public class IntOptimizedSolver extends Solver {
 					// Checking if the remainder of the division between i and j
 					// is smaller then the half of j using the halfLUT look up table
 					// and if that's the case the is bool gets set to false and the inner loop gets escaped
-					if(i % j < halfLUT[j-2]) { is = false; break; }
+					if(i % j < Main.halfLUT_int[j-2]) { is = false; break; }
 				}
 				if (is) {
 					printBufCount++;
@@ -82,7 +78,7 @@ public class IntOptimizedSolver extends Solver {
 					// Checking if the remainder of the division between i and j
 					// is smaller then the half of j using the halfLUT look up table
 					// and if that's the case the is bool gets set to false and the inner loop gets escaped
-					if(i % j < halfLUT[j-2]) { is = false; break; }
+					if(i % j < Main.halfLUT_int[j-2]) { is = false; break; }
 				}
 				if (is) {
 					printBufCount++;

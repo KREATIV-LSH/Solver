@@ -41,6 +41,12 @@ public class Util {
 		return Integer.parseInt(in);
 	}
 
+	// Parses a String to a long
+	public static long parseLong(String in) {
+		in = in.replace("_", "").replace(",", "").replace(".", "").replace("`", "").replace("'", "");
+		return Long.parseLong(in);
+	}
+
 	// Start printing by resetting StringBuilder
 	public static void startPrint() {
 		mainSB.setLength(0);

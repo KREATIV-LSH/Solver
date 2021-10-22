@@ -38,7 +38,7 @@ public class OldSolver extends Solver {
 		this.startingCountdown(5);
 
 		// Calculation
-		long startTime = System.currentTimeMillis();
+		long startTime = System.nanoTime();
 		int prev = 599;
 		int printBufCount = 0;
 
@@ -61,12 +61,11 @@ public class OldSolver extends Solver {
 				}
 			}
 		}
-		long elapsedTime = System.currentTimeMillis() - startTime;
+		long elapsedTime = System.nanoTime() - startTime;
 		Util.startPrint();
 		Util.mainSB.append("Finished!\n");
-		Util.mainSB.append("Time of calculation: ");
-		Util.mainSB.append(elapsedTime);
-		Util.mainSB.append("ms\n");
+		Util.mainSB.append("Time of calculation:\n");
+		this.formatAppendTimeToBuff(elapsedTime);
 		Util.endPrint();
 
 	}
