@@ -38,7 +38,7 @@ public abstract class Solver {
 		Util.startPrint();
 		Util.mainSB.append("Starting in ");
 		Util.endPrint();
-		for(int i = time; i > 0; i--) {
+		for (int i = time; i > 0; i--) {
 			Util.startPrint();
 			Util.mainSB.append(i);
 			Util.mainSB.append(" ");
@@ -54,9 +54,41 @@ public abstract class Solver {
 		Util.endPrint();
 	}
 
-	public static String[] getUserSettings(boolean start, boolean stop, boolean step, boolean distanceToPrev) throws IOException {
+	// Checks if the start value ends with a 9
+	// And when not will ask the user if he wants to continue
+	public static void checkIfStart9(String start) {
+		try {
+			if (start.toCharArray()[start.length()-1] != '9') {
+				Util.startPrint();
+				Util.mainSB.append(
+						"\nYour provided start point does not end with the digit '9' this will often cause errors!\n");
+				Util.mainSB.append("Do you want to continue anyways(could yield wrong results or errors)? (y/N): ");
+				Util.endPrint();
+				String input = "";
+
+				input = Main.inputBuffReader.readLine();
+				while (input.length() != 0 && !input.equalsIgnoreCase("y") && !input.equalsIgnoreCase("n")) {
+					Util.startPrint();
+					Util.mainSB.append("Do you want to continue anyways(could yield wrong results or errors)? (y/N): ");
+					Util.endPrint();
+					input = Main.inputBuffReader.readLine();
+				}
+				if(!input.equalsIgnoreCase("y")) {
+					Util.startPrint();
+					Util.mainSB.append("Exiting...");
+					Util.endPrint();
+					System.exit(0);
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static String[] getUserSettings(boolean start, boolean stop, boolean step, boolean distanceToPrev,
+			boolean lineBufSize) throws IOException {
 		ArrayList<String> temp = new ArrayList<>();
-		if(start) {
+		if (start) {
 			Util.startPrint();
 			Util.mainSB.append("Input start-point of solver: ");
 			Util.endPrint();
@@ -128,6 +160,26 @@ public abstract class Solver {
 				System.exit(1);
 			}
 		}
+		if (lineBufSize) {
+			Util.startPrint();
+			Util.mainSB.append("Line buffer size(how many lines will be stored in the buffer before printing):");
+			Util.endPrint();
+			String _lineBufSize = Main.inputBuffReader.readLine();
+			if (_lineBufSize != null) {
+				while (_lineBufSize.length() == 0 || !Util.isNumber(_lineBufSize)) {
+					Util.startPrint();
+					Util.mainSB
+							.append("Line buffer size(how many lines will be stored in the buffer before printing):");
+					Util.endPrint();
+					_lineBufSize = Main.inputBuffReader.readLine();
+				}
+				temp.add(_lineBufSize);
+			} else {
+				System.err.println("Not able to process input!");
+				System.exit(1);
+			}
+		}
+
 		return temp.toArray(new String[0]);
 	}
 
