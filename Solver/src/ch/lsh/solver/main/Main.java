@@ -2,14 +2,16 @@ package ch.lsh.solver.main;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.util.Arrays;
 
 import ch.lsh.solver.solver.SolverHandler;
 
 public class Main {
 
 	// BufferedReader that can read from the shell
-	public static final BufferedReader inputBuffReader = new BufferedReader(new InputStreamReader(System.in));
-	
+	public static BufferedReader inputBuffReader = new BufferedReader(new InputStreamReader(System.in));
+
 	public static void main(String[] args) {
 		// Setting up util-class with a 16 char big StringBuilder
 		Util.setup(16);
@@ -20,6 +22,23 @@ public class Main {
 		// Setting up modes for easier handling later
 		ModesHandler.setupModes();
 
+		if(args.length == 0 ) {
+			handleWelocome();
+		} else {
+			// Functionality to run program without interface but instead using the arguments
+			// This is a feature for advanceder users and is not guaranteed to work always
+			// In this mode there is no protection against wrong inputs so they will crash the program and yield an error
+			// This functionality will put all args for the program onto the input-reader
+			String params = "";
+			for (int i = 0; i < args.length; i++) {
+				params += args[i] + "\n";
+			}
+			inputBuffReader = new BufferedReader(new StringReader(params));
+			handleWelocome();
+		}
+	}
+
+	private static void handleWelocome() {
 		// Printing welcome and star messages
 		Util.startPrint();
 		Util.mainSB.append("This is a Solver for a mathematical \"problem\", more info here:\n");
