@@ -7,10 +7,10 @@ import ch.lsh.solver.main.Main;
 import ch.lsh.solver.main.Util;
 import ch.lsh.solver.solver.Solver;
 
-public class TestSolver extends Solver {
+public class LongJITOptimized extends Solver {
 
-	public TestSolver() {
-		super("Test", "Test");
+	public LongJITOptimized() {
+		super("Long-JIT-Optimized", "A long solver with optimization and JIT warmup functionality");
 	}
 
 	@Override

@@ -1,12 +1,12 @@
 import subprocess
 
 # modes to benchmark
-# 0 = Testing
+# 1 = Long-JIT-Optimized
 # 2 = Long Optimized
 # 3 = IntOptimized
-modes = [0, 2, 3]
+modes = [1, 2, 3]
 
-options = "9 10_000_009 true 10"
+options = "9 100_000_009 false 20"
 
 for x in range(0,3):
 	outputs = [[], [], []]
@@ -31,6 +31,6 @@ for x in range(0,3):
 			ns += time
 		final_times_ns.append(ns/len(outputs[i]))
 
-	print(f"{final_times_ns[0]/1000} testing")
-	print(f"{final_times_ns[1]/1000} long-optimzed")
-	print(f"{final_times_ns[2]/1000} int-optimized")
+	print(f"{final_times_ns[0]/1000000:.2f} jit-optimized")
+	print(f"{final_times_ns[1]/1000000:.2f} long-optimzed")
+	print(f"{final_times_ns[2]/1000000:.2f} int-optimized")
