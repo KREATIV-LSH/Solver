@@ -66,6 +66,26 @@ private static void jitWarmup(long start1, long start2, long end1, long end2, in
 As you can see this function will run the main calculation function 50 times with random arguments and printing disabled.
 This is so because this allows the JVM(**J**ava **V**irtual **M**achine) to call the JIT-Compiler which then can compile our code in a more efficient way. The printing is disabled because it will clutter our output and removes the time it takes to print so the warmup only takes about 1-3 sek.
 
+# Speed comparison
+The data for this was created using the `benchmark.py` script!  
+In this current state the program consist of 4 different solver-modes:
+```
+0. Old                 Old implementation of solver
+1. Long-JIT-Optimized  A long solver with optimization and JIT warmup functionality
+2. LongOptimized       Long-based version of solver with optimization
+3. IntOptimized        Integer-based version of solver with optimization
+```
+The question you now may ask is which one is the fastest and best?  
+After many runs of the benchmark script and even more time spent in excel I was able to compile the data down to this:  
+![result](images/speed-comparison.png)
+
+This data was obtained by running the benchmark script 3 times with different setting.
+An example of such benchmark output:  
+![benchmark](images/benchmark-out.png)
+
+## Summary
+**As excepted the JIT-Optimized long solver is the fastest.**  
+Often the int based solver will be faster than the normal long solver this is the case because the long solver is intended for values that are bigger then the int limit of `2,147,483,647`.
 
 # Goals
 My goals with this project are making the program as fast as possible and also learning how to use git and GitHub in a productive way!

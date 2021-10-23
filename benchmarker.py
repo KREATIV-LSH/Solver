@@ -6,7 +6,7 @@ import subprocess
 # 3 = IntOptimized
 modes = [1, 2, 3]
 
-options = "9 100_000_009 false 20"
+options = "9 1_000_009 false 10"
 
 for x in range(0,3):
 	outputs = [[], [], []]
