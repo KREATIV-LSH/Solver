@@ -50,17 +50,17 @@ The more advancer `Long-JIT-Optimized` Solver is a good example of JIT optimizat
 In this use case we can see that the program will not run directly but instead calls a function before running:
 ```Java
 private static void jitWarmup(long start1, long start2, long end1, long end2, int lineBufSize) {
-	Random rmd = new Random();
-	for (int i = 0; i < 51; i++) {
-		long start = (long) rmd.nextInt((int) start2 - (int) start1) + start2;
-		long stop = (long) rmd.nextInt((int) end2 - (int) end1) + end2;
-		stop = lastDigit9(stop);
-		Util.disablePrintingGlobaly();
-		calculate(start, stop, true, lineBufSize);
-		calculate(start, stop, false, lineBufSize);
-		Util.enablePrintingGlobaly();
+    Random rmd = new Random();
+    for (int i = 0; i < 51; i++) {
+        long start = (long) rmd.nextInt((int) start2 - (int) start1) + start2;
+        long stop = (long) rmd.nextInt((int) end2 - (int) end1) + end2;
+        stop = lastDigit9(stop);
+        Util.disablePrintingGlobaly();
+        calculate(start, stop, true, lineBufSize);
+        calculate(start, stop, false, lineBufSize);
+        Util.enablePrintingGlobaly();
         System.out.println((i * 2) + "% ");
-	}
+    }
 }
 ```
 As you can see this function will run the main calculation function 50 times with random arguments and printing disabled.
