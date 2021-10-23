@@ -34,10 +34,11 @@ public class Main {
 		if(args.length == 0 ) {
 			handleWelocome();
 		} else {
-			// Functionality to run program without interface but instead using the arguments
+			// Functionality to run program without interface but instead using command line arguments
 			// This is a feature for advanceder users and is not guaranteed to work always
-			// In this mode there is no protection against wrong inputs so they will crash the program and yield an error
-			// This functionality will put all args for the program onto the input-reader
+
+			// This feature was specifically designed for the benchmark script and redirecting program output to a file
+			// The redirecting of the output will save much time because there is no time spend printing to the console
 			String params = "";
 			for (int i = 0; i < args.length; i++) {
 				params += args[i] + "\n";

@@ -24,16 +24,6 @@ public class OldSolver extends Solver {
 		int start = Util.parseInt(inputs[0]);
 		int stop = Util.parseInt(inputs[1]);
 		boolean distance = Boolean.parseBoolean(inputs[2]);
-		Util.startPrint();
-		Util.mainSB.append("Settings:\n");
-		Util.mainSB.append("Start: ");
-		Util.mainSB.append(start);
-		Util.mainSB.append("\nStop: ");
-		Util.mainSB.append(stop);
-		Util.mainSB.append("\nDistanceToPrev: ");
-		Util.mainSB.append(distance);
-		Util.mainSB.append("\n");
-		Util.endPrint();
 
 		this.startingCountdown(5);
 
