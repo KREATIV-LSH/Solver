@@ -40,5 +40,32 @@ private static int[] halfLUT = {
 Another optimization used is the way that for loops are used, in the highly optimized versions of this program the main for-loop will travers from end to beginning and not like normally from beginning to end.
 This will speed up runtime of the program slightly.
 
+# JIT-Optimization
+## What even is JIT?
+**JIT** stands for **J**ust **I**n **T**ime and in the context of Java is the Just In Time Compiler, as you may know Java isn't a compiled language and gets interpreted on run time.
+But as you may know from pure interpreted languages like python performance is not that great, that's why java has the JIT-Compiler its a smart compiler that will compile the code during run time and even make changes to it so it will run faster.  
+
+## How is it used here?
+The more advancer `Long-JIT-Optimized` Solver is a good example of JIT optimization.  
+In this use case we can see that the program will not run directly but instead calls a function before running:
+```Java
+private static void jitWarmup(long start1, long start2, long end1, long end2, int lineBufSize) {
+	Random rmd = new Random();
+	for (int i = 0; i < 51; i++) {
+		long start = (long) rmd.nextInt((int) start2 - (int) start1) + start2;
+		long stop = (long) rmd.nextInt((int) end2 - (int) end1) + end2;
+		stop = lastDigit9(stop);
+		Util.disablePrintingGlobaly();
+		calculate(start, stop, true, lineBufSize);
+		calculate(start, stop, false, lineBufSize);
+		Util.enablePrintingGlobaly();
+        System.out.println((i * 2) + "% ");
+	}
+}
+```
+As you can see this function will run the main calculation function 50 times with random arguments and printing disabled.
+This is so because this allows the JVM(**J**ava **V**irtual **M**achine) to call the JIT-Compiler which then can compile our code in a more efficient way. The printing is disabled because it will clutter our output and removes the time it takes to print so the warmup only takes about 1-3 sek.
+
+
 # Goals
 My goals with this project are making the program as fast as possible and also learning how to use git and GitHub in a productive way!
