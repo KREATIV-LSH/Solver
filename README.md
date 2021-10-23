@@ -52,13 +52,24 @@ In this use case we can see that the program will not run directly but instead c
 private static void jitWarmup(long start1, long start2, long end1, long end2, int lineBufSize) {
     Random rmd = new Random();
     for (int i = 0; i < 51; i++) {
+        // Random start value
         long start = (long) rmd.nextInt((int) start2 - (int) start1) + start2;
+        // Random end value
         long stop = (long) rmd.nextInt((int) end2 - (int) end1) + end2;
+        // Ensure that end value ends with '9' and when not change it to a '9'
         stop = lastDigit9(stop);
+
+        // Disable printing for astetic and performace wise reasons
         Util.disablePrintingGlobaly();
+
+        // Calculate with random start and end value with distance-printing enabled
         calculate(start, stop, true, lineBufSize);
+        // Calculate with random start and end value with distance-printing disabled
         calculate(start, stop, false, lineBufSize);
+
+        // Re-enable printing
         Util.enablePrintingGlobaly();
+        // Printing percantige of how many runs have been completed
         System.out.println((i * 2) + "% ");
     }
 }
