@@ -19,6 +19,7 @@ public class SolverHandler {
 		addSolver(new IntOptimizedSolver());
 		addSolver(new LongOptimizedSolver());
 		addSolver(new LongJITOptimized());
+		addSolver(new CustomizableJITSolver());
 	}
 
 	private static void addSolver(Solver solver) {
