@@ -40,6 +40,16 @@ Now you can select which solver you want to run by entering the number that corr
 
 The steps after this should be described by the program itself and can change for every solver.
 
+## Advanceder use
+
+If you want to run the program over and over again with the same settings or you want to redirect the programs output to a file you can do that by following these steps:  
+1. Run the program normally and writ down all inputs you had to give to the program;
+2. Construct a command to run the program and add the inputs to the end separated with a ' ';
+3. Press enter and let the program do its work without asking you to input anything;  
+
+Example of such command:  
+`java -cp PATH_TO_BIN_FOLDER ch.lsh.solver.main.Main 1 9 1_000_009 false 10` or `java -jar PATH_TO_FILE.jar 1 9 1_000_009 false 10`  
+This will run the `Long-JIT-Optimized` Solver with a starting point of 9, ending point of 100,000,009, distace-printing disabled and a line buffer size of 10.
 
 # Optimization
 For a big increase in efficiency the program doesn't calculate the half of the numbers from 2 to 10 (or in advanceder versions of the program from 2 to n) but instead uses a table of pre-computed half's of the numbers.  
