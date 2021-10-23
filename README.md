@@ -27,6 +27,20 @@ def isGood(num : int):
     return good
 ```
 
+# How to use
+
+Run the program from the command line, this can be done either by downloading the source and running this command:  
+`java -cp PATH_TO_BIN_FOLDER ch.lsh.solver.main.Main`  
+Or by downloading the compiled version and running this command:  
+`java -jar PATH_TO_FILE.jar`  
+
+After this you should be prompted by an interface looking something like this:
+![interface](images/interface.png)  
+Now you can select which solver you want to run by entering the number that corresponds with the solver. For example '1' for the `Long-JIT-Optimized` Solver.  
+
+The steps after this should be described by the program itself and can change for every solver.
+
+
 # Optimization
 For a big increase in efficiency the program doesn't calculate the half of the numbers from 2 to 10 (or in advanceder versions of the program from 2 to n) but instead uses a table of pre-computed half's of the numbers.  
 
