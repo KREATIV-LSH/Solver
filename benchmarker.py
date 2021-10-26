@@ -1,12 +1,8 @@
 import subprocess
 
-# modes to benchmark
-# 1 = Long-JIT-Optimized
-# 2 = Long Optimized
-# 3 = IntOptimized
-modes = [1, 2, 3]
+modes = [0, 3]
 
-options = "9 1_000_009 false 10"
+options = "9 1_000_000_009 false 20"
 
 for x in range(0,3):
 	outputs = [[], [], []]

@@ -20,6 +20,7 @@ public class SolverHandler {
 		addSolver(new LongOptimizedSolver());
 		addSolver(new LongJITOptimized());
 		addSolver(new CustomizableJITSolver());
+		addSolver(new SetDifSolver());
 	}
 
 	private static void addSolver(Solver solver) {
